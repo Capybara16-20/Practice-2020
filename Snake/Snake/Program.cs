@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Snake
 {
@@ -7,58 +8,43 @@ namespace Snake
         static void Main(string[] args)
         {
             Point p1 = new Point(1, 3, '*');
-            //p1.Draw();
+            p1.Draw();
 
             Point p2 = new Point(4, 5, '#');
-            //p2.Draw();
+            p2.Draw();
 
-            int x = 1;
-            Func1(x);
-            Console.WriteLine("Call Func1. x = " + x);
+            List<int> numList = new List<int>();
+            numList.Add(0);
+            numList.Add(1);
+            numList.Add(2);
 
-            Func2(x);
-            Console.WriteLine("Call Func2. x = " + x);
+            int x = numList[0];
+            int y = numList[1];
+            int z = numList[2];
 
-            Func3(x);
-            Console.WriteLine("Call Func3. x = " + x);
+            foreach(var i in numList)
+            {
+                Console.WriteLine(i);
+            }
 
-            Move(p1, 10, 10);
-            Console.WriteLine("Call Move(p1, 10, 10). p1.x = " + p1.x + ", p1.y = " + p1.y);
+            numList.RemoveAt(0);
 
-            Reset(p2);
-            Console.WriteLine("Call Reset(p2). p2.x = " + p2.x + ", p2.y = " + p2.y);
+            List<Point> pList = new List<Point>();
+            pList.Add(p1);
+            pList.Add(p2);
 
-            p1 = p2;
-            p2.x = 8;
-            p2.y = 8;
-            Console.WriteLine("p1 = p2. p1.x = " + p1.x + ", p1.y = " + p1.y); 
+            Point p3 = new Point(10, 10, '$');
+            Point p4 = new Point(13, 14, '&');
+            pList.Add(p3);
+            pList.Add(p4);
+
+            List<char> cList = new List<char>();
+            cList.Add('$');
+            cList.Add('%');
+            cList.Add('^');
+            cList.Add('@');
+
             Console.ReadKey();
-        }
-
-        public static void Func1(int value)
-        {
-
-        }
-
-        public static void Func2(int value)
-        {
-            value++;
-        }
-
-        public static void Func3(int x)
-        {
-            x++;
-        }
-
-        public static void Reset(Point p)
-        {
-            p = new Point();
-        }
-
-        public static void Move(Point p, int dx, int dy)
-        {
-            p.x = p.x + dx;
-            p.y = p.y + dy;
         }
     }
 }
