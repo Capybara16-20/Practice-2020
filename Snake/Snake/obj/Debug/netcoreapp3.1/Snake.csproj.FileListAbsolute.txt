@@ -1,0 +1,11 @@
+C:\Users\user\Desktop\Папка\EPAM\Внутренние курсы\Practice-2020.git\Snake\Snake\bin\Debug\netcoreapp3.1\Snake.exe
+C:\Users\user\Desktop\Папка\EPAM\Внутренние курсы\Practice-2020.git\Snake\Snake\bin\Debug\netcoreapp3.1\Snake.deps.json
+C:\Users\user\Desktop\Папка\EPAM\Внутренние курсы\Practice-2020.git\Snake\Snake\bin\Debug\netcoreapp3.1\Snake.runtimeconfig.json
+C:\Users\user\Desktop\Папка\EPAM\Внутренние курсы\Practice-2020.git\Snake\Snake\bin\Debug\netcoreapp3.1\Snake.runtimeconfig.dev.json
+C:\Users\user\Desktop\Папка\EPAM\Внутренние курсы\Practice-2020.git\Snake\Snake\bin\Debug\netcoreapp3.1\Snake.dll
+C:\Users\user\Desktop\Папка\EPAM\Внутренние курсы\Practice-2020.git\Snake\Snake\bin\Debug\netcoreapp3.1\Snake.pdb
+C:\Users\user\Desktop\Папка\EPAM\Внутренние курсы\Practice-2020.git\Snake\Snake\obj\Debug\netcoreapp3.1\Snake.csprojAssemblyReference.cache
+C:\Users\user\Desktop\Папка\EPAM\Внутренние курсы\Practice-2020.git\Snake\Snake\obj\Debug\netcoreapp3.1\Snake.AssemblyInfoInputs.cache
+C:\Users\user\Desktop\Папка\EPAM\Внутренние курсы\Practice-2020.git\Snake\Snake\obj\Debug\netcoreapp3.1\Snake.AssemblyInfo.cs
+C:\Users\user\Desktop\Папка\EPAM\Внутренние курсы\Practice-2020.git\Snake\Snake\obj\Debug\netcoreapp3.1\Snake.dll
+C:\Users\user\Desktop\Папка\EPAM\Внутренние курсы\Practice-2020.git\Snake\Snake\obj\Debug\netcoreapp3.1\Snake.pdb
