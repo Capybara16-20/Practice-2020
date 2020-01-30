@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+
+ <head>
+  <meta charset="utf-8">
+ </head>
+
+ <body>
+  <script>
+   //Перепишите функцию, используя оператор '?' или '||'
+   function checkAge(age)
+   {
+    return (age > 18) ? true : confirm('Родители разрешили?');
+	//return (age > 18) || confirm('Родители разрешили?');
+   }
+   
+   //Функция min
+   function min(a, b)
+   {
+    return (a <= b) ? a : b;
+   }
+   
+   //Функция pow(x,n)
+   var x = prompt("Введите число:","");
+   var n = prompt("Введите степень:","");
+   function pow(x,n)
+   {
+    var s = 1;
+    for (var i = 1; i <= n; i++)
+	{
+	 s *= x;
+	}
+	return s;
+   }
+   alert(pow(x,n));
+   
+  </script>
+ </body>
+
+</html>
