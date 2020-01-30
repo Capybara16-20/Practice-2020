@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+
+ <head>
+  <meta charset="utf-8">
+ </head>
+
+ <body>
+  <script>
+  
+   //Напишите "if", аналогичный "switch"
+   if (browser == "IE")
+   {
+    alert( 'О, да у вас IE!' );
+   }
+   else if (browser == "Chrome" || rowser == "Firefox" ||rowser == "Safari" ||rowser == "Opera")
+   {
+    alert( 'Да, и эти браузеры мы поддерживаем' );
+   }
+   else
+   {
+    alert( 'Мы надеемся, что и в вашем браузере все ок!' );
+   }
+   
+   //Переписать if'ы в switch
+   var a = +prompt('a?', '');
+   switch (a) {
+    case 0:
+     alert(0);
+     break;
+	case 1:
+     alert(1);
+     break;
+	case 2:
+	case 3:
+     alert('2,3');
+     break;
+   }
+
+  </script>
+ </body>
+
+</html>
