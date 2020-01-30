@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+
+ <head>
+  <meta charset="utf-8">
+ </head>
+
+ <body>
+  <script>
+   //Выведите чётные числа
+   for (var i = 2; i <= 10; i+=2)
+   {
+    alert(i);
+   }
+   
+   //Замените for на while
+   var i = 0;
+   while (i < 3)
+   {
+    alert( "номер " + i + "!" );
+	i++;
+   }
+   
+   //Повторять цикл, пока ввод неверен
+   var a = 0;
+   while (a <= 100)
+   {
+    a = prompt("Введите число больше 100", "");
+   }
+   
+   //Вывести простые числа
+   for (var i = 2; i <= 10; i++)
+   {
+   var simple = true;
+    for (var j = 2; j < i; j++)
+	{
+	 if ((i % j) == 0)
+	 {
+	  simple = false;
+	 }
+	}
+    if (simple == true)
+	{
+     alert(i);
+	}
+   }
+  </script>
+ </body>
+
+</html>
