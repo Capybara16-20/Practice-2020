@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+
+ <head>
+  <meta charset="utf-8">
+ </head>
+
+ <body>
+  <script>
+  
+   //Сделать первый символ заглавным
+   /*function ucFirst(str)
+   {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+   }
+   alert(ucFirst("вася"));
+   
+   //Проверьте спам
+   function checkSpam(str)
+   {
+   lowStr = str.toLowerCase();
+    return ((lowStr.indexOf("viagra") > -1) || (lowStr.indexOf("xxx") > -1)) ? true : false;
+   }*/
+   
+   //Усечение строки
+   function truncate(str, maxlength)
+   {
+    if (str.length > maxlength)
+	{
+     return str.slice(0, maxlength - 3) + "...";
+    }
+   }
+   
+   //Выделить число
+   function getMoney(str)
+   {
+    return +str.slice(1);
+   }
+
+  </script>
+ </body>
+
+</html>
