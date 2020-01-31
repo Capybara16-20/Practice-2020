@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html>
+
+ <head>
+  <meta charset="utf-8">
+ </head>
+
+ <body>
+  <script>
+   
+   //Получить последний элемент массива
+   var a = goods[goods.length - 1];
+   
+   //Добавить новый элемент в массив
+   goods[goods.length] = "Компьютер";
+   
+   //Создание массива
+   var styles = ["Джаз", "Блюз"];
+   styles.push("Рок-н-Ролл");
+   styles[styles.length - 2] = "Классика";
+   alert(styles.shift());
+   styles.unshift("Регги");
+   styles.unshift("Рэп");
+   
+   //Получить случайное значение из массива
+   var rand = min + Math.floor(Math.random() * (max + 1 - min));
+   alert(arr[rand]);
+   
+   //Создайте калькулятор для введённых значений
+   var arr = [];
+   var sum = 0;
+   while (true)
+   {
+    var a = prompt("Введите число","");
+	if ((a === "") || (a === null) || isNaN(a)) 
+	{
+	 break;
+	}
+	numbers.push(+a);
+   }
+   for (var i = 0; i < arr.length; i++)
+   {
+    sum += arr[i];
+   }
+   alert(sum);
+   
+   //Поиск в массиве
+   function find(arr, value)
+   {
+    for (var i = 0; i < array.length; i++)
+	{
+     if (array[i] === value) 
+	 {
+	  return i;
+	 }
+    }
+	return -1;
+   }
+   
+   //Фильтр диапазона
+   function filterRange(arr, a, b)
+   {
+    var newArr = [];
+	for (var i = 0; i < arr.length; i++)
+	{
+     if ((arr[i] >= a) && (arr[i] <= b))
+	 {
+      newArr.push(arr[i]);
+     }
+    }
+	return newArr;
+   }
+   
+   //Решето Эратосфена
+   var arr = [];
+   var sum = 0;
+   var p = 2;
+   for (var i = 2; i < 100; i++)
+   {
+    arr[i] = true;
+   }
+   do
+   {
+    for (i = 2 * p; i < 100; i += p)
+    {
+     arr[i] = false;
+    }
+    for (i = p + 1; i < 100; i++)
+    {
+     if (arr[i]) break;
+    }
+    p = i;
+   } while (p * p < 100);
+   for (i = 0; i < arr.length; i++)
+   {
+    if (arr[i])
+	{
+     sum += i;
+    }
+   }
+   alert(sum);
+   
+   //Подмассив наибольшей суммы
+   function getMaxSubSum(arr)
+   {
+    var sum = 0;
+    for (var i = 0; i < arr.length; i++)
+	{
+     var subSum = 0;
+     for (var j = i; j < arr.length; j++)
+	 {
+      subSum += arr[j];
+      sum = Math.max(sum, subSum);
+     }
+    }
+    return sum;
+   }
+   
+  </script>
+ </body>
+
+</html>
