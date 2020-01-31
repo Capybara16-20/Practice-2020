@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+
+ <head>
+  <meta charset="utf-8">
+ </head>
+
+ <body>
+  <script>
+  
+   //Перепишите цикл через map
+   var arr = ["Есть", "жизнь", "на", "Марсе"];
+   var arrLength = [];
+   var arrLength = arr.map(function(item)
+   {
+    return item.length;
+   });
+   
+   //Массив частичных сумм
+   function getSums(arr)
+   {
+    var result = [];
+    var totalSum = arr.reduce(function(sum, item)
+	{
+     result.push(sum);
+     return sum + item;
+    });
+    result.push(totalSum);
+    return result;
+   }
+
+  </script>
+ </body>
+
+</html>
