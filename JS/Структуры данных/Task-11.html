@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+
+ <head>
+  <meta charset="utf-8">
+ </head>
+
+ <body>
+  <script>
+  
+   //Создайте дату
+   var d = new Date(2012, 1, 20, 3, 12);
+   
+   //Имя дня недели
+   function getWeekDay(date)
+   {
+    var days = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
+	return days[date.getDay()];
+   }
+   
+   //День недели в европейской нумерации
+   function getLocalDay(date)
+   {
+    var day = date.getDay();
+	if (day == 0)
+	{
+     day = 7;
+    }
+	return day;
+   }
+   
+   //День указанное количество дней назад
+   function getDateAgo(date, days)
+   {
+    date.setDate(date.getDate() - days);
+	return date.getDate();
+   }
+   
+   //Последний день месяца?
+   function getLastDayOfMonth(year, month)
+   {
+    var date = new Date(year, month + 1, 0);
+    return date.getDate();
+   }
+   
+   //Сколько секунд уже прошло сегодня?
+   function getSecondsToday()
+   {
+    var now = new Date();
+	var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+	return Math.floor((now - today) / 1000);
+   }
+   
+   //Сколько секунд - до завтра?
+   function getSecondsToTomorrow()
+   {
+    var now = new Date();
+	var tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate()+1);
+	return Math.round((tomorrow - now) / 1000);
+   }
+   
+   //Вывести дату в формате дд.мм.гг
+   var d = new Date(2020, 0, 31);
+   alert(new Intl.DateTimeFormat().format(d));
+   
+   //Относительное форматирование даты
+   function formatDate(date)
+   {
+    var time = new Date() - date;
+	var second = Math.floor(time / 1000);
+	var minute = Math.floor(time / 60000);
+	if (time < 1000)
+	{
+     return "только что";
+    }
+	else if (second < 60)
+	{
+     return second + " сек. назад";
+    }
+	else if (minute < 60)
+	{
+     return minute + " мин. назад";
+    }
+	else
+	{
+	 //
+	}
+   }
+
+  </script>
+ </body>
+
+</html>
