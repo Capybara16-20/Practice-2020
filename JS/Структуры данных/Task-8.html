@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<html>
+
+ <head>
+  <meta charset="utf-8">
+ </head>
+
+ <body>
+  <script>
+   
+   //Добавить класс в строку
+   function addClass(obj, cls)
+   {
+    var classes = obj.className ? obj.className.split(" ") : [];
+	for (var i = 0; i < classes.length; i++)
+	{
+     if (classes[i] == cls) 
+	 {
+	  return;
+	 }
+    }
+    classes.push(cls);
+    obj.className = classes.join(" ");
+   }
+   
+   //Перевести текст вида border-left-width в borderLeftWidth
+   function camelize(str)
+   {
+    var words = str.split("-");
+	for (var i = 1; i < arr.length; i++) 
+    {
+     words[i] = words[i].charAt(0).toUpperCase() + arr[i].slice(1);
+    }
+	return words.join('');
+   }
+   
+   //Функция removeClass
+   function removeClass(obj, cls)
+   {
+    var classes = obj.className.split(" ");
+	for (var i = 0; i < classes.length; i++)
+	{
+     if (classes[i] == cls)
+	 {
+      classes.splice(i, 1);
+     }
+    }
+    obj.className = classes.join(' ');
+   }
+   
+   //Фильтрация массива "на месте"
+   function filterRangeInPlace(arr, a, b)
+   {
+    for (var i = 0; i < arr.length; i++)
+	{
+     if (arr[i] < a || arr[i] > b)
+	 {
+      arr.splice(i, 1);
+     }
+    }
+   }
+   
+   //Сортировать в обратном порядке
+   var arr = [5, 2, 1, -10, 8];
+   function compare(a, b)
+   {
+    return b - a;
+   }
+   arr.sort(compare);
+   
+   //Скопировать и отсортировать массив
+   var arr = ["HTML", "JavaScript", "CSS"];
+   var arrSorted = arr.slice();
+   arrSorted = arrSorted.sort();
+   
+   //Случайный порядок в массиве
+   var arr = [1, 2, 3, 4, 5];
+   function compareRandom(a, b)
+   {
+    return Math.random() - 0.5;
+   }
+   alert(arr.sort(compareRandom));
+   
+   //Сортировка объектов
+   var vasya = { name: "Вася", age: 23 };
+   var masha = { name: "Маша", age: 18 };
+   var vovochka = { name: "Вовочка", age: 6 };
+   var people = [ vasya , masha , vovochka ];
+   function compareAge(a, b)
+   {
+    return a.age - b.age;
+   }
+   people.sort(compareAge);
+   
+   //Вывести односвязный список
+   var list = {
+    value: 1,
+    next: {
+     value: 2,
+     next: {
+      value: 3,
+      next: {
+       value: 4,
+       next: null
+      }
+     }
+    }
+   };
+   //1
+   function printList(list)
+   {
+    while (list)
+	{
+     alert( list.value );
+     list = list.next;
+    }
+   }
+   //2
+   function printList(list)
+   {
+    alert( list.value );
+	if (list.next)
+	{
+     printList(list.next);
+    }
+   }
+   //3
+   function printReverseList(list)
+   {
+    if (list.next)
+	{
+     printReverseList(list.next);
+    }
+    alert( list.value );
+   }
+   //4
+   function printReverseList(list)
+   {
+    var arr = [];
+	while (list)
+	{
+     arr.push(list.value);
+     list = list.next;
+    }
+	for (var i = arr.length - 1; i >= 0; i--)
+	{
+    alert( arr[i] );
+    }
+   }
+   
+   //Отфильтровать анаграммы
+   function aclean(arr)
+   {
+    var obj = {};
+	for (var i = 0; i < arr.length; i++)
+	{
+     var sorted = arr[i].toLowerCase().split("").sort().join("");
+     obj[sorted] = arr[i];
+    }
+	var resultArr = [];
+	for (var i in obj) 
+	{
+	 result.push(obj[i]);
+	}
+    return resultArr;
+   }
+   
+   //Оставить уникальные элементы массива
+   function unique(arr)
+   {
+    var results = [];
+    next:
+    for (var i = 0; i < arr.length; i++)
+	{
+     var str = arr[i];
+     for (var j = 0; j < results.length; j++)
+	 {
+      if (results[j] == str) continue next;
+     }
+     results.push(str);
+    }
+	return results;
+   }
+   
+  </script>
+ </body>
+
+</html>
