@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    
+    <body>
+        <script>
+
+            //Две функции один объект
+            var obj = {};
+            function A() { return obj; }
+            function B() { return obj; }
+            var a = new A;
+            var b = new B;
+            alert( a == b ); // true
+
+            //Создать Calculator при помощи конструктора
+            function Calculator()
+            {
+                this.read = function()
+                {
+                    this.a = +prompt("Введите первое число", "");
+                    this.b = +prompt("Введите второе число", "");
+                }
+                this.sum = function()
+                {
+                    return this.a + this.b;
+                }
+                this.mul = function()
+                {
+                    return this.a * this.b;
+                }
+            }
+
+            //Создать Accumulator при помощи конструктора
+            function Accumulator(firstVal)
+            {
+                this.value = firstVal;
+                this.read = function()
+                {
+                    this.value += +prompt("Введите увеличение", "");
+                }
+            }
+
+            //Добавить get/set-свойства
+            function User(fullName)
+            {
+                this.fullName = fullName;
+                Object.defineProperties(this,
+                {
+                    firstName:
+                    {
+                        get: function()
+                        {
+                            return this.fullName.split(' ')[0];
+                        },
+                        set: function(newFirstName)
+                        {
+                            this.fullName = newFirstName + ' ' + this.lastName;
+                        }
+                    },
+                    lastName:
+                    {
+                        get: function()
+                        {
+                            return this.fullName.split(' ')[1];
+                        },
+                        set: function(newLastName)
+                        {
+                            this.fullName = this.firstName + ' ' + newLastName;
+                        }
+                    }
+                });
+            }
+
+        </script>
+    </body>
+</html>

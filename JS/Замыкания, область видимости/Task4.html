@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+    </head>
+    
+    <body>
+        <script>
+
+            //Сумма через замыкание
+            function sum(a)
+            {
+                return function(b)
+                {
+                    return a + b;
+                }
+            }
+
+            //Функция - строковый буфер
+            function makeBuffer()
+            {
+                var string = "";
+                return function(newStr)
+                {
+                    if (arguments.length == 0)
+                    {
+                        return string;
+                    }
+                    else
+                    {
+                        string = string + " " + newStr;
+                    }
+                }
+            }
+
+            //Строковый буфер с очисткой
+            function makeBuffer()
+            {
+                var string = "";
+                return function buffer(newStr)
+                {
+                    if (arguments.length == 0)
+                    {
+                        return string;
+                    }
+                    else
+                    {
+                        string = string + " " + newStr;
+                    }
+                    buffer.empty = function()
+                    {
+                        string = "";
+                    }
+                }
+                
+                return buffer;
+            }
+
+            //Сортировка
+            function byField(field)
+            {
+                return function(a, b)
+                {
+                    return a[field] > b[field] ? 1 : -1;
+                }
+            }
+
+            //Фильтрация через функцию
+            function filter(arr, func)
+            {
+                var array = [];
+                for (var i = 0; i < arr.length; i++)
+                {
+                    var currentElement = arr[i];
+                    if (func(currentElement))
+                    {
+                        array.push(currentElement);
+                    }
+                }
+                return array;
+            }
+            function inBetween(a, b)
+            {
+                return function(value)
+                {
+                    return ((value >= a) && (value <= b));
+                }
+            }
+            function inArray(arr)
+            {
+                return function(value)
+                {
+                    return (arr.indexOf(value) != -1);
+                }
+            }
+
+            //Армия функций
+            function makeArmy()
+            {
+                var shooters = [];
+                for (var i = 0; i < 10; i++)
+                {
+                    var shooter = function currentShooter()
+                    { // функция-стрелок
+                        alert(currentShooter.i); // выводит свой номер
+                    }
+                    shooter.i = i;
+                    shooters.push(shooter);
+                }
+            return shooters;
+            }
+
+        </script>
+    </body>
+
+</html>
