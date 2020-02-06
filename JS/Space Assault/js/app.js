@@ -42,14 +42,15 @@ function init() {
         reset();
     });
 
-    megalithInit();
+    megalithsInit();
+    mannaInit();
 
     reset();
     lastTime = Date.now();
     main();
 }
 
-function megalithInit() {
+function megalithsInit() {
     while(megaliths.length < 4)
     {
         megaliths.push({
@@ -61,8 +62,28 @@ function megalithInit() {
     for (var i=1; i<megaliths.length; i++) {
         if(boxCollides(megaliths[i-1].pos, megaliths[i-1].sprite.size, megaliths[i].pos, megaliths[i].sprite.size)) {
             megaliths = [];
-            megalithInit();
+            megalithsInit();
         }
+    }
+}
+
+function mannaInit() {
+    while(manna.length < 1)
+    {
+        manna.push({
+            pos: [Math.floor(Math.random() * ((canvas.width - 162) + 1)) + 110,
+                Math.floor(Math.random() * ((canvas.height - 90) + 1)) + 45],
+                sprite: new Sprite('img/sprites.png', [0, 165], [55, 45], 5, [0, 1])
+        });
+    };
+    for(var i=0; i<megaliths.length; i++) {
+        for(var j=0; j<manna.length; j++) {
+            if(boxCollides(manna[j].pos, manna[j].sprite.size, megaliths[i].pos, megaliths[i].sprite.size)) {
+                manna = [];
+                mannaInit();
+            }
+        }
+        
     }
 }
 
@@ -76,7 +97,8 @@ var bullets = [];
 var enemies = [];
 var explosions = [];
 var megaliths = [];
-
+var manna = [];
+var mannaDisappears = [];
 var lastFire = Date.now();
 var gameTime = 0;
 var isGameOver;
@@ -85,6 +107,10 @@ var terrainPattern;
 // The score
 var score = 0;
 var scoreEl = document.getElementById('score');
+//Manna Score
+var mannaScore = 0;
+var mannaScoreEl = document.getElementById('mannaScore');
+
 
 // Speed in pixels per second
 var playerSpeed = 200;
@@ -112,6 +138,7 @@ function update(dt) {
     checkCollisions();
 
     scoreEl.innerHTML = score;
+    mannaScoreEl.innerHTML = mannaScore;
 };
 
 function handleInput(dt) {
@@ -201,6 +228,16 @@ function updateEntities(dt) {
     for(var i=0; i<megaliths.length; i++) {
         megaliths[i].sprite.update(dt);
     }
+
+    //Update manna
+    for(var i=0; i<manna.length; i++) {
+        manna[i].sprite.update(dt);
+    }
+
+    //Update manna disapears animation
+    for(var i=0; i<mannaDisappears.length; i++) {
+        mannaDisappears[i].sprite.update(dt);
+    }
 }
 
 // Collisions
@@ -279,8 +316,23 @@ function checkCollisions() {
             }
         }
 
+        
         if(boxCollides(pos, size, player.pos, player.sprite.size)) {
             gameOver();
+        }
+    }
+
+    for (var i=0; i<manna.length; i++) {
+        if (boxCollides(player.pos, player.sprite.size, manna[i].pos, manna[i].sprite.size)) {
+            mannaDisappears.push({
+                pos: manna[i].pos,
+                sprite: new Sprite('img/sprites.png', [0, 165], manna[i].sprite.size, 5, [0, 1, 2, 3, 4],
+                null, true)
+            });
+            manna.splice(i, 1);
+            mannaScore += 1;
+            mannaInit();
+            break;
         }
     }
 }
@@ -340,6 +392,8 @@ function render() {
     renderEntities(enemies);
     renderEntities(explosions);
     renderEntities(megaliths);
+    renderEntities(manna);
+    renderEntities(mannaDisappears);
 };
 
 function renderEntities(list) {
@@ -369,10 +423,13 @@ function reset() {
     isGameOver = false;
     gameTime = 0;
     score = 0;
+    mannaScore = 0;
     enemies = [];
     bullets = [];
     megaliths = [];
-    megalithInit();
+    manna = [];
+    megalithsInit();
+    mannaInit();
     player.pos = [50, canvas.height / 2];
     
 };
