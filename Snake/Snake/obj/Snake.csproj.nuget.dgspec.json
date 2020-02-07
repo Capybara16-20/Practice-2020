@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\Desktop\\Папка\\EPAM\\Внутренние курсы\\Practice-2020.git\\Snake\\Snake\\Snake.csproj": {}
+    "C:\\Users\\user\\Desktop\\Папка\\EPAM\\Внутренние курсы\\Practice-2020\\Snake\\Snake\\Snake.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\Desktop\\Папка\\EPAM\\Внутренние курсы\\Practice-2020.git\\Snake\\Snake\\Snake.csproj": {
+    "C:\\Users\\user\\Desktop\\Папка\\EPAM\\Внутренние курсы\\Practice-2020\\Snake\\Snake\\Snake.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Desktop\\Папка\\EPAM\\Внутренние курсы\\Practice-2020.git\\Snake\\Snake\\Snake.csproj",
+        "projectUniqueName": "C:\\Users\\user\\Desktop\\Папка\\EPAM\\Внутренние курсы\\Practice-2020\\Snake\\Snake\\Snake.csproj",
         "projectName": "Snake",
-        "projectPath": "C:\\Users\\user\\Desktop\\Папка\\EPAM\\Внутренние курсы\\Practice-2020.git\\Snake\\Snake\\Snake.csproj",
+        "projectPath": "C:\\Users\\user\\Desktop\\Папка\\EPAM\\Внутренние курсы\\Practice-2020\\Snake\\Snake\\Snake.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Desktop\\Папка\\EPAM\\Внутренние курсы\\Practice-2020.git\\Snake\\Snake\\obj\\",
+        "outputPath": "C:\\Users\\user\\Desktop\\Папка\\EPAM\\Внутренние курсы\\Practice-2020\\Snake\\Snake\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
