@@ -214,11 +214,29 @@ function updateEntities(dt) {
             i--;
         }
     }
-
+    
     // Update all the enemies
     for(var i=0; i<enemies.length; i++) {
-        enemies[i].pos[0] -= enemySpeed * dt;
-        enemies[i].sprite.update(dt);
+        for(var j=0; j<megaliths.length; j++) {
+            if (boxCollides(enemies[i].pos, enemies[i].sprite.size, megaliths[j].pos, megaliths[j].sprite.size)) {
+                for (k=0; k<megaliths[j].sprite.size[1]; k++)
+                {
+                    if (megaliths[j].pos[1] <= (canvas.height / 2 - 23)) {
+                        enemies[i].pos[1] += enemySpeed/15 * dt;
+                        enemies[i].sprite.update(dt);
+                    }
+                    else {
+                        enemies[i].pos[1] -= enemySpeed/15 * dt;
+                        enemies[i].sprite.update(dt);
+                    }
+                    
+                }
+            }
+            else {
+                enemies[i].pos[0] -= enemySpeed/4 * dt;
+                enemies[i].sprite.update(dt);
+            }
+        }
 
         // Remove if offscreen
         if(enemies[i].pos[0] + enemies[i].sprite.size[0] < 0) {
@@ -280,18 +298,18 @@ function checkCollisions() {
     for(var i=0; i<enemies.length; i++) {
         var pos = enemies[i].pos;
         var size = enemies[i].sprite.size;
-
+        //HERE
         for(var j=0; j<megaliths.length; j++) {
             var pos3 = megaliths[j].pos;
             var size3 = megaliths[j].sprite.size;
             if(boxCollides(pos, size, pos3, size3)) {
                 if (pos3[1] <= canvas.height / 2) {
-                    pos[1] += size3[1];
-                    break;
+                    /*pos[1] += size3[1];
+                    break;*/
                 }
                 else {
-                    pos[1] -= size3[1];
-                    break;
+                    /*pos[1] -= size3[1];
+                    break;*/
                 }
             }
         }
