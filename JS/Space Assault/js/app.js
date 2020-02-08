@@ -55,12 +55,15 @@ function megalithsInit() {
     {
         addMegalith();
     };
+    for(var i=0; i<megaliths.length; i++) {
+        megaliths[i].sprite.size = [50, 45];
+    }
 }
 
 function addMegalith() {
     var pos = [Math.floor(Math.random() * ((canvas.width - 162) + 1)) + 110,
-        Math.floor(Math.random() * ((canvas.height - 90) + 1)) + 45];
-    var size = [55, 45];
+        Math.floor(Math.random() * ((canvas.height - 160) + 1)) + 80];
+    var size = [110, 90];
     for(var i=0; i<megaliths.length; i++) {
         if(boxCollides(pos, size, megaliths[i].pos, megaliths[i].sprite.size)) {
             return;
@@ -68,7 +71,7 @@ function addMegalith() {
     }
     return megaliths.push({
         pos: pos,
-        sprite: new Sprite('img/sprites.png', [0, 217], [55, 45], 0)
+        sprite: new Sprite('img/sprites.png', [0, 217], [110, 90], 0)
     });
 }
 
@@ -221,7 +224,8 @@ function updateEntities(dt) {
             if (boxCollides(enemies[i].pos, enemies[i].sprite.size, megaliths[j].pos, megaliths[j].sprite.size)) {
                 for (k=0; k<megaliths[j].sprite.size[1]; k++)
                 {
-                    if (megaliths[j].pos[1] <= (canvas.height / 2 - 23)) {
+                    if (((megaliths[j].pos[1] < enemies[i].pos[1]) && (megaliths[j].pos[1] - enemies[i].sprite.size[1] > 0))
+                        || ((megaliths[j].pos[1] >= enemies[i].pos[1]) && (megaliths[j].pos[1] + enemies[i].sprite.size[1] > 480))) {
                         enemies[i].pos[1] += enemySpeed/15 * dt;
                         enemies[i].sprite.update(dt);
                     }
@@ -229,7 +233,6 @@ function updateEntities(dt) {
                         enemies[i].pos[1] -= enemySpeed/15 * dt;
                         enemies[i].sprite.update(dt);
                     }
-                    
                 }
             }
             else {
@@ -298,21 +301,6 @@ function checkCollisions() {
     for(var i=0; i<enemies.length; i++) {
         var pos = enemies[i].pos;
         var size = enemies[i].sprite.size;
-        //HERE
-        for(var j=0; j<megaliths.length; j++) {
-            var pos3 = megaliths[j].pos;
-            var size3 = megaliths[j].sprite.size;
-            if(boxCollides(pos, size, pos3, size3)) {
-                if (pos3[1] <= canvas.height / 2) {
-                    /*pos[1] += size3[1];
-                    break;*/
-                }
-                else {
-                    /*pos[1] -= size3[1];
-                    break;*/
-                }
-            }
-        }
 
         next: for(var j=0; j<bullets.length; j++) {
             var pos2 = bullets[j].pos;
@@ -390,16 +378,17 @@ function checkPlayerBounds() {
         player.pos[1] = canvas.height - player.sprite.size[1];
     }
 
+    //Координаты игрока при столкновении с мегалитами изменяются здесь
     for (var i=0; i<megaliths.length; i++)
     {
-        var pos = player.pos;
+        /*var pos = player.pos;
         var size = player.sprite.size;
         var pos1 = megaliths[i].pos;
         var size1 = megaliths[i].sprite.size;
 
         if (boxCollides(pos, size, pos1, size1))
         {
-            if ((pos[0] < pos1[0]) && (pos[0] > pos1[0] - size[0]))
+            if (((pos[0] < pos1[0]) && (pos[0] > pos1[0] - size1[0])) && ((pos[1] >= pos1[1] - 30) && (pos[1] <= pos1[1] + size1[1])))
             {
                 pos[0] = pos1[0] - size[0];
             }
@@ -409,6 +398,32 @@ function checkPlayerBounds() {
                 pos[0] = pos1[0] + size[0] + size[0]/2 - 3;
             }
 
+            break;
+        }*/
+
+        var pos = player.pos;
+        var size = player.sprite.size;
+        var pos1 = megaliths[i].pos;
+        var size1 = megaliths[i].sprite.size;
+
+        if (boxCollides(pos, size, pos1, size1))
+        {
+            if ((pos[0] < pos1[0]) && (pos[0] > pos1[0] - 47))
+            {
+                pos[0] = pos1[0] - 36;
+            }
+            else if ((pos[1] < pos1[1]) && (pos[1] > pos1[1] - 45))
+            {
+                pos[1] = pos1[1] - 39;
+            }
+            else if ((pos[0] > pos1[0]) && (pos[0] < pos1[0] + 51))
+            {
+                pos[0] = pos[0] + 3.33;
+            }
+            else if ((pos[1] > pos1[1]) && (pos[1] < pos1[1] + 45))
+            {
+                pos[1] = pos1[1] + 39;
+            }
             break;
         }
         
