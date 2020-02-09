@@ -22,7 +22,6 @@ namespace Tanks
         List<Tank> tanks = new List<Tank>();
         List<Apple> apples = new List<Apple>();
         List<Bullet> bullets;
-        List<bool> bulletDisappeared;
         bool started = false;
 
         public Form1(int sizeX, int sizeY, int tanksNumber, int applesNumber, int speed)
@@ -46,7 +45,6 @@ namespace Tanks
         {
             kolobok = new Kolobok(10, sizeY - 60);
             kolobok.direction = Direction.RIGHT;
-            bulletDisappeared = new List<bool>();
             bullets = new List<Bullet>();
             for (int i = 0; i < tanksNumber + 1; i++)
             {
@@ -58,7 +56,6 @@ namespace Tanks
                 {
                     bullets.Add(new Bullet(new Bitmap(@"C:\Users\user\Desktop\Папка\EPAM\Внутренние курсы\Practice-2020\Tanks\Tanks\Tanks\img\greenBullet.png")));
                 }
-                bulletDisappeared.Add(true);
             }
             while (tanks.Count < tanksNumber)
             {
@@ -93,9 +90,9 @@ namespace Tanks
                 {
                     Move(bullet);
                 }
-                for (int i = 0; i < tanksNumber + 1; i++)
+                for (int i = 1; i < tanksNumber + 1; i++)
                 {
-                    bulletDisappeared[i] = BulletDisappearance(bullets[i]);
+                    TankShooting(tanks[i - 1], bullets[i], BulletDisappearance(bullets[i]));
                 }
                 CheckCollisions();
                 Invalidate();
@@ -158,12 +155,11 @@ namespace Tanks
             }
             else if (e.KeyCode.ToString() == "Space")
             {
-                if (bulletDisappeared[0])
+                if (BulletDisappearance(bullets[0]))
                 {
                     bullets[0].x = kolobok.x + kolobok.size / 2 - bullets[0].size / 2;
                     bullets[0].y = kolobok.y + kolobok.size / 2 - bullets[0].size / 2;
                     bullets[0].direction = kolobok.direction;
-                    bulletDisappeared[0] = false;
                 }
             }
         }
@@ -249,6 +245,16 @@ namespace Tanks
                     tank.direction = Direction.DOWN;
                     ChangeImgDirection(tank, Direction.DOWN);
                 }
+            }
+        }
+
+        private void TankShooting(Tank tank, Bullet bullet, bool bulletDisappeared)
+        {
+            if (bulletDisappeared)
+            {
+                bullet.x = tank.x + tank.size / 2 - bullet.size / 2;
+                bullet.y = tank.y + tank.size / 2 - bullet.size / 2;
+                bullet.direction = tank.direction;
             }
         }
 
@@ -424,6 +430,13 @@ namespace Tanks
                     apples.Add(CreateApple());
                 }
             }
+            for (int i = 1; i < bullets.Count; i++)
+            {
+                if (Colides.Collides(bullets[i].x, bullets[i].y, bullets[i].size, bullets[i].size, kolobok.x, kolobok.y, kolobok.size, kolobok.size))
+                {
+                    GameOver();
+                }
+            }
         }
 
         private void OnPaint(object sender, PaintEventArgs e)
@@ -452,6 +465,7 @@ namespace Tanks
         {
             started = false;
             gameOverLabel.Show();
+            KeyPreview = false;
         }
 
         private void startButton_Click(object sender, EventArgs e)
@@ -459,6 +473,7 @@ namespace Tanks
             score = 0;
             started = true;
             startButton.Hide();
+            startButton.Enabled = false;
         }
     }
 }
