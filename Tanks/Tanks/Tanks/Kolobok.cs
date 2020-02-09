@@ -9,11 +9,9 @@ namespace Tanks
 {
     public class Kolobok : Entities
     {
-        public Image kolobokImg;
-
         public Kolobok(int x, int y)
         {
-            kolobokImg = new Bitmap(@"C:\Users\user\Desktop\Папка\EPAM\Внутренние курсы\Practice-2020\Tanks\Tanks\Tanks\img\kolobok.png");
+            this.img = new Bitmap(@"C:\Users\user\Desktop\Папка\EPAM\Внутренние курсы\Practice-2020\Tanks\Tanks\Tanks\img\kolobok.png");
             this.x = x;
             this.y = y;
             size = 60; 

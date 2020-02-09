@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace Tanks
 {
-    class Tank : Entities
+    class Apple : Entities
     {
-        public Tank(int sizeX, int sizeY)
+        public Apple(int sizeX, int sizeY)
         {
-            this.img = new Bitmap(@"C:\Users\user\Desktop\Папка\EPAM\Внутренние курсы\Practice-2020\Tanks\Tanks\Tanks\img\tank.png");
+            this.img = new Bitmap(@"C:\Users\user\Desktop\Папка\EPAM\Внутренние курсы\Practice-2020\Tanks\Tanks\Tanks\img\apple.png");
             Random rnd = new Random();
             size = 60;
             this.x = rnd.Next(6, sizeX + 4 - size);
             this.y = rnd.Next(6, sizeY + 4 - size);
-            direction = Direction.UP;
+            
         }
     }
 }
