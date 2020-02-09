@@ -7,11 +7,8 @@ using System.Drawing;
 
 namespace Tanks
 {
-    public class Kolobok
+    public class Kolobok : Entities
     {
-        public int x;
-        public int y;
-        public int size;
         public Image kolobokImg;
 
         public Kolobok(int x, int y)
