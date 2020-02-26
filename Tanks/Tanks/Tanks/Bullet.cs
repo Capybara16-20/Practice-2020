@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Tanks
 {
-    class Bullet : Entities
+    public class Bullet : Entities
     {
         public Bullet(Image img)
         {
@@ -15,6 +15,11 @@ namespace Tanks
             this.x = -20;
             this.y = -20;
             size = 20;
+        }
+
+        public bool BulletDisappearance(int sizeX, int sizeY)
+        {
+            return ((x > sizeX + 10) || (x < -20) || (y < -20) || (y > sizeY + 10));
         }
     }
 }
